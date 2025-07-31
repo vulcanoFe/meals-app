@@ -1,6 +1,8 @@
+import { useLayoutEffect } from "react";
 import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
 import MealItem from "../components/MealItem";
-import { MEALS } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
+import Category from "../models/category";
 import Meal from "../models/meal";
 import { MealsOverviewScreenNavigationProp, MealsOverviewScreenRouteProp } from "../types/navigation";
 
@@ -13,6 +15,14 @@ function MealsOverviewScreen({ navigation, route }: MealsOverviewScreenProps) {
 
 	// Recupera il parametro categoryId dalla route
 	const categoryId = route.params.categoryId;
+
+	useLayoutEffect(() => {
+		let title = "Meals Overview";
+		const category = CATEGORIES.find((cat: Category) => cat.id === categoryId);
+		title = category ? category.title : title;
+		navigation.setOptions({ title: category?.title });
+	}, [categoryId, navigation]);
+
 
 	const displayedMeals = MEALS.filter((mealItem: Meal) => {
 		return mealItem.categoryIds.indexOf(categoryId) >= 0;
