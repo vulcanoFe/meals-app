@@ -45,7 +45,7 @@ const mealsCategoryScreenOpt: NativeStackNavigationOptions = {
 
 const mealsDetailScreenOpt: NativeStackNavigationOptions = {
 	title: 'Meal Detail',
-	contentStyle: { backgroundColor: 'white' },
+	contentStyle: { backgroundColor: 'white' }
 }
 
 const styles = StyleSheet.create({
