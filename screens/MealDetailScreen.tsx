@@ -1,5 +1,5 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import List from "../components/List";
 import MealDetails from "../components/MealDetails";
 import SubTitle from "../components/SubTitle";
@@ -11,7 +11,7 @@ function MealDetailScreen() {
 	const meal = route.params.meal;
 
 	return (
-		<View style={styles.container}>
+		<ScrollView style={styles.container}>
 			<View style={styles.innerContainer}>
 				<View>
 					<Image source={{ uri: meal.imageUrl }} style={styles.image} />
@@ -27,7 +27,7 @@ function MealDetailScreen() {
 					<List data={meal.steps} />
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 	)
 }
 
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: 'white',
+		marginBottom: 32
 	},
 	innerContainer: {
 		width: '100%',
