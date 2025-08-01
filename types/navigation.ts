@@ -1,14 +1,20 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Meal from '../models/meal';
 
 interface MealsOverviewProps {
 	categoryId: string;
+}
+
+interface MealDetailProps {
+	meal: Meal;
 }
 
 // Definisce i parametri per ogni schermata nella tua app
 export type RootStackParamList = {
 	MealsCategories: undefined;
 	MealsOverview: MealsOverviewProps;
+	MealDetail: MealDetailProps
 };
 
 // Tipo per la prop navigation di CategoriesScreen
